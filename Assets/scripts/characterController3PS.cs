@@ -9,7 +9,7 @@ public class characterController3PS : MonoBehaviour
     public float sensitiviteSourisX = 222f;
     public float sensitiviteSourisY = 250f;
 
-    public float hauteurAuSol = 1.25f;
+    public static float hauteurAuSol = 2.25f;
 
     public GameObject cam;
 

@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class controlVaisseau : MonoBehaviour
 {
+    //deplacement vaisseau
+    public float vitesse;
+    public float vitesseTourne;
+    public float vitesseMonte;
+
+    Rigidbody rb;
+
     public GameObject[] lumieres;
     float progresMoteur;
 
@@ -17,6 +24,8 @@ public class controlVaisseau : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody>();
+
         //eteindre les lumieres du vaisseau
         foreach (var lumiere in lumieres)
         {
@@ -34,6 +43,9 @@ public class controlVaisseau : MonoBehaviour
         //allumer le moteur
         if (!moteurEnMarche) 
         {
+            //allumer la gravite du vaiiseau
+            GetComponent<Rigidbody>().useGravity = true;
+
             allumerMoteur();
             foreach (var lumiere in lumieres)
             {
@@ -43,6 +55,10 @@ public class controlVaisseau : MonoBehaviour
         }
         else
         {
+            //eteindre la gravite du vaiiseau
+            GetComponent<Rigidbody>().useGravity = false;
+
+            //allumer lumieres
             foreach (var lumiere in lumieres)
             {
                 lumiere.SetActive(true);
@@ -60,9 +76,37 @@ public class controlVaisseau : MonoBehaviour
         }
     }
 
+    void FixedUpdate()
+    {
+        if (moteurEnMarche)
+        {
+            //tourner
+            rb.AddRelativeTorque(Input.GetAxis("Vertical") * vitesseMonte, 0, Input.GetAxis("Horizontal") * -vitesseTourne);
+
+            //avancer et reculer/freiner
+            if (Input.GetKey(KeyCode.Space))
+            {
+                rb.AddRelativeForce(0, 0, vitesse);
+            }
+            if (Input.GetKey(KeyCode.LeftControl))
+            {
+                float vitesseRecule;
+                if(rb.velocity.magnitude >= 0)
+                {
+                    vitesseRecule = vitesse / 3;
+                }
+                else
+                {
+                    vitesseRecule = vitesse * 100;
+                }
+                rb.AddRelativeForce(0, 0, -vitesseRecule);
+            }
+        }
+    }
+
     void allumerMoteur()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.E))
         {
             progresMoteur+= 300 * Time.deltaTime;
         }

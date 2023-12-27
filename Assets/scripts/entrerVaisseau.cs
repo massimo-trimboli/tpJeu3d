@@ -41,6 +41,9 @@ public class entrerVaisseau : MonoBehaviour
             currentCam.SetActive(false);
             joueur.transform.parent = null;
             joueur.SetActive(true);
+
+            //ajuster rotation du joueur
+            joueur.transform.localEulerAngles = new Vector3(0, joueur.transform.localEulerAngles.y, 0);
         }
     }
 

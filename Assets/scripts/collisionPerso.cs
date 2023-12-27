@@ -18,13 +18,21 @@ public class collisionPerso : MonoBehaviour
     {
         if( infoCollision.gameObject.tag == "projectile" )
         {
+            //baisser la barre de vie
+            Vie.hp -= 50;
             //desactiver le mouvement du perso
             ToggleControl();
             //lancer le joueur dans la meme direction que le projectile
-            GetComponent<Rigidbody>().velocity = infoCollision.gameObject.GetComponent<Rigidbody>().velocity * forceColision;
-            GetComponent<Rigidbody>().AddRelativeForce(0, 2500, 0);
+            GetComponent<Rigidbody>().velocity = infoCollision.gameObject.GetComponent<Rigidbody>().velocity.normalized * forceColision;
+            GetComponent<Rigidbody>().AddRelativeForce(0, 1f, 0);
             //activer le mouvement du perso
-            Invoke("ToggleControl", 1.5f);
+            Invoke("ToggleControl", .5f);
+        }
+
+        if (infoCollision.gameObject.tag == "enemi")
+        {
+            //baisser la barre de vie
+            Vie.hp -= 20;
         }
     }
 

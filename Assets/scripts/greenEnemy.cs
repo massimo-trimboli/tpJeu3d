@@ -30,7 +30,8 @@ public class greenEnemy : MonoBehaviour
         balle.SetActive(true);
         //balle.transform.LookAt(target.transform);
         //balle.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, vitesseBalle);
-        balle.GetComponent<Rigidbody>().AddForce((target.transform.position - balle.transform.position) * vitesseBalle);
+        Vector3 direction = (target.transform.position - balle.transform.position).normalized;
+        balle.GetComponent<Rigidbody>().AddForce(direction * vitesseBalle);
         
         GetComponent<Animator>().SetTrigger("tire");
     }

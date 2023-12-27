@@ -30,7 +30,6 @@ public class gravite : MonoBehaviour
             transform.rotation = rotation;
 
             GetComponent<Rigidbody>().AddForce(direction * gravity);
-            //GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity + direction * gravity;
         }
     }
 }
