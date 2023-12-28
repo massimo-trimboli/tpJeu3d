@@ -31,8 +31,16 @@ public class collisionPerso : MonoBehaviour
 
         if (infoCollision.gameObject.tag == "enemi")
         {
-            //baisser la barre de vie
-            Vie.hp -= 20;
+            //tuer si cest laraignee rouge
+            if (infoCollision.gameObject.name.Contains("spiderRed"))
+            {
+                Vie.hp -= 99999;
+            }
+            else //faire moins de degats si cest le vert
+            {
+                //baisser la barre de vie
+                Vie.hp -= 20;
+            }
         }
     }
 
