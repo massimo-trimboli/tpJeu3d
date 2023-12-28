@@ -7,12 +7,13 @@ public class greenEnemy : MonoBehaviour
     //donnes pour le projectile
     public float vitesseBalle;
     public GameObject pew;
-    public GameObject target;
+    GameObject target;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        target = GameObject.FindGameObjectWithTag("Player");
         //pew.SetActive(false);
         InvokeRepeating("Tirrer", 3, 3);
     }
