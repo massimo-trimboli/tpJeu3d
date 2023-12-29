@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class entrerVaisseau : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class entrerVaisseau : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        joueur = GameObject.FindGameObjectWithTag("Player");
         currentCam = camCockpit;
     }
 

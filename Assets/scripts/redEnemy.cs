@@ -13,6 +13,9 @@ public class redEnemy : MonoBehaviour
     GameObject target;
     Rigidbody rb;
 
+    int hp = 3;
+    bool estMort = true;
+
 
     void Start()
     {
@@ -21,32 +24,35 @@ public class redEnemy : MonoBehaviour
 
     void Update()
     {
-        //aller vers le joeur sil est proche
-        if (target != null)
+        if (!estMort)
         {
-            //faire face au joueur
-            transform.LookAt(target.transform);
-            transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
-
-            //determiner la direction vers le joueur
-            Vector3 direction = target.transform.position - transform.position;
-            direction.Normalize();
-
-            //se deplacer vers le joueur
-            if(vitesse < vitesseMax)
+            //aller vers le joeur sil est proche
+            if (target != null)
             {
-                vitesse += acceleration * Time.deltaTime;
-            }
-            rb.velocity = new Vector3((direction * vitesse).x, rb.velocity.y, (direction * vitesse).z);
-        }
-        else
-        {
-            vitesse = 0;
-            rb.velocity = new Vector3(0, rb.velocity.y, 0);
-        }
+                //faire face au joueur
+                transform.LookAt(target.transform);
+                transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
 
-        //animer si marche
-        GetComponent<Animator>().SetFloat("vitesse", rb.velocity.magnitude);
+                //determiner la direction vers le joueur
+                Vector3 direction = target.transform.position - transform.position;
+                direction.Normalize();
+
+                //se deplacer vers le joueur
+                if (vitesse < vitesseMax)
+                {
+                    vitesse += acceleration * Time.deltaTime;
+                }
+                rb.velocity = new Vector3((direction * vitesse).x, rb.velocity.y, (direction * vitesse).z);
+            }
+            else
+            {
+                vitesse = 0;
+                rb.velocity = new Vector3(0, rb.velocity.y, 0);
+            }
+
+            //animer si marche
+            GetComponent<Animator>().SetFloat("vitesse", rb.velocity.magnitude);
+        }
     }
 
     //cibler le jouer quand ill es proche
@@ -63,5 +69,30 @@ public class redEnemy : MonoBehaviour
         {
             target = null;
         }
+    }
+
+    void OnCollisionEnter(Collision infoCollision)
+    {
+        //gerer la vie de lenemi
+        if (infoCollision.gameObject.tag == "projectile")
+        {
+            hp--;
+
+            if (hp <= 0)
+            {
+                if (!estMort)
+                {
+                    Vie.compteurEnemi--;
+                    GetComponent<Animator>().SetTrigger("mort");
+                    estMort = true;
+                    Invoke("Detruire", 5f);
+                }
+            }
+        }
+    }
+
+    void Detruire()
+    {
+        Destroy(gameObject);
     }
 }

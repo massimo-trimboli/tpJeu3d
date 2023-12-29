@@ -9,6 +9,9 @@ public class greenEnemy : MonoBehaviour
     public GameObject pew;
     GameObject target;
 
+    int hp = 2;
+    bool estMort = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -21,8 +24,11 @@ public class greenEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(target.transform);
-        transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
+        if (!estMort)
+        {
+            transform.LookAt(target.transform);
+            transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
+        }
     }
 
     void Tirrer()
@@ -35,5 +41,28 @@ public class greenEnemy : MonoBehaviour
         balle.GetComponent<Rigidbody>().AddForce(direction * vitesseBalle);
         
         GetComponent<Animator>().SetTrigger("tire");
+    }
+
+    void OnCollisionEnter(Collision infoCollision)
+    {
+        //gerer la vie de lenemi
+        if (infoCollision.gameObject.tag == "projectile")
+        {
+            hp--;
+
+            if(hp <= 0)
+            {
+                Vie.compteurEnemi--;
+                GetComponent<Animator>().SetTrigger("mort");
+                estMort = true;
+                CancelInvoke();
+                Invoke("Detruire", 5f);
+            }
+        }
+    }
+
+    void Detruire()
+    {
+        Destroy(gameObject);
     }
 }

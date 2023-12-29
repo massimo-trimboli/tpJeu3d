@@ -7,10 +7,14 @@ public class collisionPerso : MonoBehaviour
     public float forceColision;
     public float drag;
 
+    public GameObject rifle1;
+    public GameObject rifle2;
 
     private void Start()
     {
         drag = GetComponent<Rigidbody>().drag;
+        rifle1.SetActive(false);
+        rifle2.SetActive(false);
     }
 
 
@@ -41,6 +45,19 @@ public class collisionPerso : MonoBehaviour
                 //baisser la barre de vie
                 Vie.hp -= 20;
             }
+        }
+    }
+
+    private void OnTriggerEnter(Collider infoCollision)
+    {
+        //ramasser fusil
+        if (infoCollision.gameObject.name == "RiflePickup")
+        {
+            Destroy(infoCollision.gameObject);
+
+            rifle1.SetActive(true);
+            rifle2.SetActive(true);
+            RifleScript.avoirFusil = true;
         }
     }
 
