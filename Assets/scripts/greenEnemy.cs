@@ -52,11 +52,14 @@ public class greenEnemy : MonoBehaviour
 
             if(hp <= 0)
             {
-                Vie.compteurEnemi--;
-                GetComponent<Animator>().SetTrigger("mort");
-                estMort = true;
-                CancelInvoke();
-                Invoke("Detruire", 5f);
+                if(!estMort)
+                {
+                    Vie.compteurEnemi--;
+                    GetComponent<Animator>().SetTrigger("mort");
+                    estMort = true;
+                    CancelInvoke();
+                    Invoke("Detruire", 5f);
+                }
             }
         }
     }

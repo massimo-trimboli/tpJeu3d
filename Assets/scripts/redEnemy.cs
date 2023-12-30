@@ -14,7 +14,7 @@ public class redEnemy : MonoBehaviour
     Rigidbody rb;
 
     int hp = 3;
-    bool estMort = true;
+    bool estMort = false;
 
 
     void Start()

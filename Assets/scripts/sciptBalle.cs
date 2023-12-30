@@ -7,7 +7,7 @@ public class sciptBalle : MonoBehaviour
     void Start()
     {
         //detruire projectile apres 1s
-        Invoke("Detruire", 1.2f);
+        Invoke("Detruire", 3.5f);
     }
 
     private void OnCollisionEnter(Collision infoCollision)

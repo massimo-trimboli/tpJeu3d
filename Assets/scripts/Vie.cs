@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Vie : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class Vie : MonoBehaviour
     public GameObject barreVie;
 
     public static int compteurEnemi;
+    public TMP_Text textEnemi;
 
     //etaindre le curseur
     public bool cursorOff;
@@ -34,5 +36,8 @@ public class Vie : MonoBehaviour
         {
             
         }
+
+        //actualiser le compteur
+        textEnemi.text = compteurEnemi.ToString();
     }
 }
