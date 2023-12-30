@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class Vie : MonoBehaviour
@@ -20,7 +21,6 @@ public class Vie : MonoBehaviour
         if (cursorOff)
         {
             Cursor.lockState = CursorLockMode.Locked;
-            //Cursor.visible = false;
         }
 
         GameObject[] enemis = GameObject.FindGameObjectsWithTag("enemi");
@@ -39,5 +39,11 @@ public class Vie : MonoBehaviour
 
         //actualiser le compteur
         textEnemi.text = compteurEnemi.ToString();
+
+        //finir le jeu quand 
+        if (compteurEnemi == 0)
+        {
+            SceneManager.LoadScene("fin");
+        }
     }
 }

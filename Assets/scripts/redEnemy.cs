@@ -86,6 +86,7 @@ public class redEnemy : MonoBehaviour
                     GetComponent<Animator>().SetTrigger("mort");
                     estMort = true;
                     Invoke("Detruire", 5f);
+                    GetComponent<AudioSource>().enabled = false;
                 }
             }
         }

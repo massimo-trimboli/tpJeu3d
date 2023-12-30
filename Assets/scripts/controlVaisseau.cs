@@ -13,6 +13,8 @@ public class controlVaisseau : MonoBehaviour
 
     public GameObject[] lumieres;
     float progresMoteur;
+    public AudioClip sonAlumeMoteur;
+    public AudioClip sonMoteur;
 
     bool moteurEnMarche = false;
     public GameObject vaisseau;
@@ -32,6 +34,8 @@ public class controlVaisseau : MonoBehaviour
             lumiere.SetActive(false);
             lumiere.GetComponent<Light>().intensity = 0;
         }
+
+        GetComponent<AudioSource>().enabled = false;
     }
 
     // Update is called once per frame
@@ -73,6 +77,10 @@ public class controlVaisseau : MonoBehaviour
         if (!dansVaisseau)
         {
             moteurEnMarche = false;
+            //gerer son
+            GetComponent<AudioSource>().clip = sonAlumeMoteur;
+            GetComponent<AudioSource>().loop = false;
+            GetComponent<AudioSource>().enabled = false;
         }
     }
 
@@ -114,6 +122,17 @@ public class controlVaisseau : MonoBehaviour
         {
             progresMoteur -= 150 * Time.deltaTime;
         }
-        if (progresMoteur >= 100) { moteurEnMarche = true; }
+        if (progresMoteur >= 100)
+        {
+            moteurEnMarche = true;
+            GetComponent<AudioSource>().enabled = true;
+            Invoke("JouerSonMoteur", 1f);
+        }
+    }
+    void JouerSonMoteur()
+    {
+        GetComponent<AudioSource>().clip = sonMoteur;
+        GetComponent<AudioSource>().loop = true;
+        GetComponent<AudioSource>().Play();
     }
 }

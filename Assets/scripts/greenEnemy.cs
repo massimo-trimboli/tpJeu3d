@@ -59,6 +59,7 @@ public class greenEnemy : MonoBehaviour
                     estMort = true;
                     CancelInvoke();
                     Invoke("Detruire", 5f);
+                    GetComponent<AudioSource>().enabled = false;
                 }
             }
         }
