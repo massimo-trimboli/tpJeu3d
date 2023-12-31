@@ -604,8 +604,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vitesse: 20
   hauteurSaut: 40
-  sensitiviteSourisX: 325
-  sensitiviteSourisY: 350
+  sensitiviteSourisX: 300
+  sensitiviteSourisY: 325
   hauteurAuSol: 2.1
   cam: {fileID: 435566599}
 --- !u!114 &236946574
