@@ -604,8 +604,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vitesse: 20
   hauteurSaut: 40
-  sensitiviteSourisX: 200
-  sensitiviteSourisY: 250
+  sensitiviteSourisX: 325
+  sensitiviteSourisY: 350
   hauteurAuSol: 2.1
   cam: {fileID: 435566599}
 --- !u!114 &236946574
@@ -2924,6 +2924,18 @@ PrefabInstance:
     - target: {fileID: 2735124801706259924, guid: d25da264022c585448294355158fe4fe, type: 3}
       propertyPath: m_Name
       value: vaisseau
+      objectReference: {fileID: 0}
+    - target: {fileID: 5169173258498904083, guid: d25da264022c585448294355158fe4fe, type: 3}
+      propertyPath: m_Size.x
+      value: 16.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 5169173258498904083, guid: d25da264022c585448294355158fe4fe, type: 3}
+      propertyPath: m_Size.y
+      value: 9.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5169173258498904083, guid: d25da264022c585448294355158fe4fe, type: 3}
+      propertyPath: m_Size.z
+      value: 19.06
       objectReference: {fileID: 0}
     - target: {fileID: 6435150893352745622, guid: d25da264022c585448294355158fe4fe, type: 3}
       propertyPath: sonMoteur
@@ -5548,15 +5560,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7682213458616953240, guid: 742f72a22d5e24c0eb6d1b58f4bdeca6, type: 3}
       propertyPath: m_LocalScale.x
-      value: 3.65
+      value: 7.8954015
       objectReference: {fileID: 0}
     - target: {fileID: 7682213458616953240, guid: 742f72a22d5e24c0eb6d1b58f4bdeca6, type: 3}
       propertyPath: m_LocalScale.y
-      value: 3.65
+      value: 7.8954015
       objectReference: {fileID: 0}
     - target: {fileID: 7682213458616953240, guid: 742f72a22d5e24c0eb6d1b58f4bdeca6, type: 3}
       propertyPath: m_LocalScale.z
-      value: 3.65
+      value: 7.8954015
       objectReference: {fileID: 0}
     - target: {fileID: 7682213458616953240, guid: 742f72a22d5e24c0eb6d1b58f4bdeca6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5564,7 +5576,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7682213458616953240, guid: 742f72a22d5e24c0eb6d1b58f4bdeca6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 62
+      value: 68.33
       objectReference: {fileID: 0}
     - target: {fileID: 7682213458616953240, guid: 742f72a22d5e24c0eb6d1b58f4bdeca6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5659,7 +5671,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.11261404, y: 0.37161186, z: 2.1993415}
+  m_Size: {x: 0.5, y: 0.55, z: 2.1993415}
   m_Center: {x: -0.0016094887, y: -0.038849156, z: 0.066143066}
 --- !u!4 &2100502484 stripped
 Transform:

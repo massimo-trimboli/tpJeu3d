@@ -32,9 +32,9 @@ public class Vie : MonoBehaviour
         //baiser la barre de vie
         barreVie.GetComponent<Image>().fillAmount = hp / 100;
 
-        if(hp < 0)
+        if(hp <= 0)
         {
-            
+            SceneManager.LoadScene("mort");
         }
 
         //actualiser le compteur

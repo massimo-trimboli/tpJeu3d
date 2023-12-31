@@ -17,6 +17,15 @@ public class collisionPerso : MonoBehaviour
         rifle2.SetActive(false);
     }
 
+    //tuer si tomber
+    void Update()
+    {
+        if (transform.position.y < -88)
+        {
+            Vie.hp = 0;
+        }
+    }
+
 
     private void OnCollisionEnter(Collision infoCollision)
     {

@@ -19,7 +19,7 @@ public class RifleScript : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && avoirFusil)
+        if ((Input.GetMouseButtonDown(0)) && (avoirFusil))
         {
             Tirrer();
         }
